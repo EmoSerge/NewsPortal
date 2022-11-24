@@ -1,0 +1,90 @@
+from news.models import *
+1.
+u1 = User.objects.create_user('User1')
+u1.save()
+u2 = User.objects.create_user('User2')
+u2.save()
+
+2.
+Author.objects.create(authorUser=u1)
+Author.objects.create(authorUser=u2)
+
+3.
+Category.objects.create(name='Sport')
+Category.objects.create(name='Politics')
+Category.objects.create(name='IT')
+Category.objects.create(name='Auto')
+
+4.
+a1=Author.objects.get(id=1)
+a2=Author.objects.get(id=2)
+Post.objects.create(authorP=a1, category_type='AR',title='Article-1', text='Some text more then 123 symbols,Some text more then 123 symbols,Some text more then 123 symbols,Some text more then 123 symbols,Some text more then 123 symbols')
+Post.objects.create(authorP=a2, category_type='AR',title='Article-2', text='Another some text more then 123 symbols, Another some text more then 123 symbols, Another some text more then 123 symbols, Another some text more then 123 symbols')
+Post.objects.create(authorP=a1, category_type='NW',title='News-1', text='News text more then 123 symbols, News text more then 123 symbols, News text more then 123 symbols, News text more then 123 symbols, News text more then 123 symbols')
+
+5.
+Post.objects.get(id=1).post_category.add(Category.objects.get(id=1))
+Post.objects.get(id=1).post_category.add(Category.objects.get(id=2))
+Post.objects.get(id=2).post_category.add(Category.objects.get(id=3))
+Post.objects.get(id=3).post_category.add(Category.objects.get(id=4))
+Post.objects.get(id=3).post_category.add(Category.objects.get(id=2))
+
+6.
+p1=Post.objects.get(id=1)
+p2=Post.objects.get(id=2)
+p3=Post.objects.get(id=3)
+Comment.objects.create(postC=p1, userC=u1, text='Some text from User1 in post1')
+Comment.objects.create(postC=p1, userC=u2, text='Some text from User2 in post1')
+Comment.objects.create(postC=p2, userC=u1, text='Some text from User1 in post2')
+Comment.objects.create(postC=p3, userC=u2, text='Some text from User2 in post3')
+Comment.objects.create(postC=p3, userC=u2, text='Another some text from User2 in post3')
+
+7.
+p1.like()
+p1.like()
+p1.like()
+p2.dislike()
+p2.dislike()
+p2.dislike()
+p2.dislike()
+p3.like()
+p3.like()
+p3.dislike()
+p3.dislike()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=3).like()
+Comment.objects.get(id=4).dislike()
+Comment.objects.get(id=4).dislike()
+c5=Comment.objects.get(id=5)
+c5.like()
+c5.dislike()
+
+8.
+a1.update_rating()
+a2.update_rating()
+
+9.
+a=Author.objects.order_by('-authorRating')[0]
+a.authorRating
+a.authorUser.username
+
+10.
+p=Post.objects.order_by('-rating')[0]
+p.time_add
+p.authorP.authorUser.username
+p.rating
+p.title
+p.preview()
+
+11.
+Comment.objects.filter(postC__id=p.id).values('time_add','userC__username','rating','text')
+
+
