@@ -1,16 +1,18 @@
 {% extends 'flatpages/default.html' %}
 
+{% load d36_filters %}
+
 {% block title %}
 <h1> New1 </h1>
 {% endblock title %}
 
 {% block content %}
-<td><h1>{{ new1.title }}</h1></td>
+<td><h1>{{ new1.title|censor }}</h1></td>
 <br>
-    <h4>
-    <td>{{ new1.time_add|date:'d M Y' }}</td>
-    <td>{{ new1.time_add|time }}</td>
-    </h4>
+<h4>
+{{ new1.time_add|date:'d M Y' }}
+{{ new1.time_add|time }}
+</h4>
 <br>
-<td>{{ new1.text}}</td>
+<td>{{ new1.text|censor}}</td>
 {% endblock content %}

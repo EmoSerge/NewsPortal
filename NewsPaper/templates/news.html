@@ -1,5 +1,7 @@
 {% extends 'flatpages/default.html' %}
- 
+
+{% load d36_filters %}
+
 {% block title %}
 News
 {% endblock title %}
@@ -20,16 +22,16 @@ News
 
            {% for n in news %}
            <tr>
-               <td>{{ n.title }}</td>
+               <td>{{ n.title|censor }}</td>
                <td>{{ n.time_add|date:'d M Y' }}</td>
                <td>{{ n.time_add|time }}</td>
-               <td>{{ n.text|truncatewords:20 }}</td>
+               <td>{{ n.text|truncatewords:20|censor }}</td>
            </tr>
            {% endfor %}
 
        </table>
 
    {% else %}
-       <h2>Товаров нет!</h2>
+       <h2>Новостей нет!</h2>
    {% endif %}
 {% endblock content %}
