@@ -1,6 +1,7 @@
 {% extends 'flatpages/default.html' %}
 
 {% load d36_filters %}
+{% load custom_tags %}
 
 {% block title %}
 News
@@ -8,7 +9,14 @@ News
 
 {% block content %}
 <h1>Все новости</h1>
-<h3> Сейчас в базе {{news|length}} новости  </h3>
+<tr> Поиск по новостям</tr>
+{#<h3> Сейчас в базе {{news|length}} новости  </h3>#}
+
+   <form action="" method="get">
+       {{ filterset.form.as_p }}
+       {# Добавим кнопку отправки данных формы #}
+       <input type="submit" value="Найти" />
+   </form>
 
    <hr>
    {% if news %}
@@ -34,4 +42,23 @@ News
    {% else %}
        <h2>Новостей нет!</h2>
    {% endif %}
+
+      {% if page_obj.has_previous %}
+       <a href="?{% url_replace page=1 %}">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {{ page_obj.number }}
+
+   {% if page_obj.has_next %}
+       <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+
 {% endblock content %}
