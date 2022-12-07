@@ -17,5 +17,5 @@ class PostFilter(FilterSet):
         model = Post
         fields = {
             "title": ['icontains'],
-            "post_category__name": ['icontains']
+            "post_category__name": ['iexact']
         }

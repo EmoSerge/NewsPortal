@@ -8,6 +8,12 @@ class Author(models.Model):
     authorRating = models.IntegerField(default=0)
     authorUser = models.OneToOneField(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.authorUser}'
+
+
+
+
     def update_rating(self):
 
         post_rating = sum(Post.objects.filter(authorP=self).values_list('rating', flat=True))
@@ -19,6 +25,9 @@ class Author(models.Model):
 class Category(models.Model):
 
     name = models.CharField(max_length=127, unique=True)
+
+    def __str__(self):
+        return f'{self.name}'
 
 
 class Post(models.Model):
