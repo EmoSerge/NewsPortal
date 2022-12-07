@@ -35,6 +35,11 @@ class NewsCreate(CreateView):
     model = Post
     template_name = 'news_edit.html'
 
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.category_type = "NW"
+        return super().form_valid(form)
+
 
 class NewsUpdate(UpdateView):
     form_class = PostForm
@@ -46,3 +51,14 @@ class NewsDelete(DeleteView):
     model = Post
     template_name = 'news_delete.html'
     success_url = reverse_lazy('news_list')
+
+
+class ArticleCreate(CreateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'article_edit.html'
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.category_type = "AR"
+        return super().form_valid(form)
