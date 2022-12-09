@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
@@ -30,7 +31,8 @@ class NewsDetail(DetailView):
     context_object_name = 'new1'
 
 
-class NewsCreate(CreateView):
+class NewsCreate(LoginRequiredMixin, CreateView):
+    raise_exception = True
     form_class = PostForm
     model = Post
     template_name = 'news_edit.html'
@@ -50,7 +52,7 @@ class NewsUpdate(UpdateView):
 class NewsDelete(DeleteView):
     model = Post
     template_name = 'news_delete.html'
-    success_url = reverse_lazy('news_list')
+    success_url = reverse_lazy('news')
 
 
 class ArticleCreate(CreateView):

@@ -23,6 +23,7 @@ News
        <table>
            <tr>
                <td><h5>Заголовок</h5></td>
+               <td><h5>Категория</h5></td>
                <td><h5>Дата</h5></td>
                <td><h5>Время</h5></td>
                <td><h5>Текст новости</h5></td>
@@ -31,6 +32,9 @@ News
            {% for n in news %}
            <tr>
                <td>{{ n.title|censor }}</td>
+               <td>{% for cat in n.post_category.all %}
+                   {{ cat.name }}
+               {% endfor %}</td>
                <td>{{ n.time_add|date:'d M Y' }}</td>
                <td>{{ n.time_add|time }}</td>
                <td>{{ n.text|truncatewords:20|censor }}</td>

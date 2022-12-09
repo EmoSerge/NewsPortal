@@ -8,6 +8,12 @@
 
 {% block content %}
 <td><h1>{{ new1.title|censor }}</h1></td>
+<td>
+Темы:
+{% for cat in new1.post_category.all %}
+    {{cat.name}}
+    {% endfor %}
+</td>
 <br>
 <h4>
 {{ new1.time_add|date:'d M Y' }}
