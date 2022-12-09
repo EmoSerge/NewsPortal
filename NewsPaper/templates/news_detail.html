@@ -9,7 +9,9 @@
 {% block content %}
 <td><h1>{{ new1.title|censor }}</h1></td>
 <td>
-Темы:
+    {% if new1.post_category.all %}
+        Категории:
+        {% endif %}
 {% for cat in new1.post_category.all %}
     {{cat.name}}
     {% endfor %}
