@@ -14,11 +14,14 @@ News
 
    <form action="" method="get">
        {{ filterset.form.as_p }}
-       {# Добавим кнопку отправки данных формы #}
        <input type="submit" value="Найти" />
    </form>
 
    <hr>
+<a href="/news/create/">Добавить новость</a>
+<a href="/news/article/create/">Добавить статью</a>
+
+
    {% if news %}
        <table>
            <tr>
@@ -27,17 +30,20 @@ News
                <td><h5>Дата</h5></td>
                <td><h5>Время</h5></td>
                <td><h5>Текст новости</h5></td>
+               <td><h5>  Действия</h5></td>
            </tr>
 
            {% for n in news %}
            <tr>
-               <td>{{ n.title|censor }}</td>
+               <td><a href="{{n.get_absolute_url}}">{{ n.title|censor }}</a></td>
                <td>{% for cat in n.post_category.all %}
                    {{ cat.name }}
                {% endfor %}</td>
                <td>{{ n.time_add|date:'d M Y' }}</td>
                <td>{{ n.time_add|time }}</td>
                <td>{{ n.text|truncatewords:20|censor }}</td>
+               <td><a href="{{n.get_absolute_url}}/delete">Удалить</a></td>
+               <td><a href="{{n.get_absolute_url}}/update">Изменить</a></td>
            </tr>
            {% endfor %}
 

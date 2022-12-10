@@ -23,4 +23,7 @@
 </h4>
 <br>
 <td>{{ new1.text|censor}}</td>
+<br>
+<td><a href="{{new1.get_absolute_url}}/delete">Удалить</a></td>
+<td><a href="{{new1.get_absolute_url}}/update">Изменить</a></td>
 {% endblock content %}
