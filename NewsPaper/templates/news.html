@@ -18,8 +18,11 @@ News
    </form>
 
    <hr>
+
+{% if perms.news.add_post %}
 <a href="/news/create/">Добавить новость</a>
 <a href="/news/article/create/">Добавить статью</a>
+{% endif %}
 
 
    {% if news %}
@@ -30,7 +33,9 @@ News
                <td><h5>Дата</h5></td>
                <td><h5>Время</h5></td>
                <td><h5>Текст новости</h5></td>
+               {% if perms.news.change_post or perms.news.delete_post %}
                <td><h5>  Действия</h5></td>
+               {% endif %}
            </tr>
 
            {% for n in news %}
@@ -42,8 +47,12 @@ News
                <td>{{ n.time_add|date:'d M Y' }}</td>
                <td>{{ n.time_add|time }}</td>
                <td>{{ n.text|truncatewords:20|censor }}</td>
-               <td><a href="{{n.get_absolute_url}}/delete">Удалить</a></td>
-               <td><a href="{{n.get_absolute_url}}/update">Изменить</a></td>
+               {% if perms.news.delete_post %}
+                   <td><a href="{{n.get_absolute_url}}/delete">Удалить</a></td>
+               {% endif %}
+               {% if perms.news.change_post %}
+                   <td><a href="{{n.get_absolute_url}}/update">Изменить</a></td>
+               {% endif %}
            </tr>
            {% endfor %}
 

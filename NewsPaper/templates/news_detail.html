@@ -24,6 +24,10 @@
 <br>
 <td>{{ new1.text|censor}}</td>
 <br>
-<td><a href="{{new1.get_absolute_url}}/delete">Удалить</a></td>
-<td><a href="{{new1.get_absolute_url}}/update">Изменить</a></td>
+{% if perms.news.delete_post %}
+    <td><a href="{{new1.get_absolute_url}}/delete">Удалить</a></td>
+{% endif %}
+{% if perms.news.change_post %}
+    <td><a href="{{new1.get_absolute_url}}/update">Изменить</a></td>
+{% endif %}
 {% endblock content %}
