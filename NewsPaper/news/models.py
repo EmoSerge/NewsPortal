@@ -11,9 +11,6 @@ class Author(models.Model):
     def __str__(self):
         return f'{self.authorUser}'
 
-
-
-
     def update_rating(self):
 
         post_rating = sum(Post.objects.filter(authorP=self).values_list('rating', flat=True))
@@ -21,6 +18,7 @@ class Author(models.Model):
         com_post_rating = sum(Comment.objects.filter(postC__in=Post.objects.filter(authorP=self)).values_list('rating', flat=True))
         self.authorRating = post_rating * 3 + comment_rating + com_post_rating
         self.save()
+
 
 class Category(models.Model):
 
