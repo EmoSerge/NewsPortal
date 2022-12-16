@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
 
 from .models import Post
 from .filters import PostFilter
@@ -67,3 +68,14 @@ class ArticleCreate(PermissionRequiredMixin, CreateView):
         post = form.save(commit=False)
         post.category_type = "AR"
         return super().form_valid(form)
+
+
+class CategoryListView(ListView):
+    model = Post
+    template_name = 'category_list.html'
+    context_object_name = 'category_list'
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, id=self.kwargs['pk'])
+        queryset = Post.objects.filter(category_type=self.category).order_by('-date')
+        return queryset
