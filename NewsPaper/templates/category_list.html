@@ -10,24 +10,16 @@ News
 {% block content %}
 <a href="/accounts/login" class="btn btn-secondary btn-sm">Log in</a>
 <a href="/accounts/logout" class="btn btn-secondary btn-sm">Log Out</a>
-<h1>Все новости</h1>
-<tr> Поиск по новостям</tr>
-{#<h3> Сейчас в базе {{news|length}} новости  </h3>#}
-
-   <form action="" method="get">
-       {{ filterset.form.as_p }}
-       <input type="submit" value="Найти" />
-   </form>
-
-   <hr>
-
-{% if perms.news.add_post %}
-<a href="/news/create/">Добавить новость</a>
-<a href="/news/article/create/">Добавить статью</a>
-{% endif %}
+<h1>Все новости по выбранной категории
+    {{ category }}
+</h1>
 
 
-   {% if news %}
+  {% if is_not_subscriber %}
+  <p class="text-center"><a href="{% url 'subscribe' category.id %}" class="btn btn-secondary btn-sm">Подписаться</a></p>
+  {% endif %}
+
+   {% if category_list %}
        <table>
            <tr>
                <td><h5>Заголовок</h5></td>
@@ -40,12 +32,13 @@ News
                {% endif %}
            </tr>
 
-           {% for n in news %}
+           {% for n in category_list %}
            <tr>
                <td><a href="{{n.get_absolute_url}}">{{ n.title|censor }}</a></td>
                <td>{% for cat in n.post_category.all %}
                     <a href="{% url 'category_list' cat.id %}">{{ cat.name }}</a>
-                    {% endfor %}</td>
+                    {% endfor %}
+               </td>
                <td>{{ n.time_add|date:'d M Y' }}</td>
                <td>{{ n.time_add|time }}</td>
                <td>{{ n.text|truncatewords:20|censor }}</td>
