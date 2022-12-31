@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 
+
 from .models import Post, Category
 from .filters import PostFilter
 from .forms import PostForm
@@ -95,3 +96,4 @@ def subscribe(request, pk):
     category.subscribers.add(user)
     message = 'Вы успешно подписались на рассылку новостей по данной категории'
     return render(request, 'subscribe.html', {'category': category, 'message': message})
+
