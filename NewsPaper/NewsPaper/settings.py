@@ -240,7 +240,7 @@ LOGGING = {
             'formatter': 'error_f'
         },
         'general': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'filters': ['require_debug_false'],
             'class': 'logging.FileHandler',
             'formatter': 'info_f',
@@ -249,7 +249,7 @@ LOGGING = {
         'error': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'formatter': 'info_f',
+            'formatter': 'error_f',
             'filename': 'logs/error.log'
         },
         'security': {
