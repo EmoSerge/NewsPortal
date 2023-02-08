@@ -3,4 +3,6 @@ commandsD2.txt
 \venv
 \virtenv
 \cache_files
-\logs\.log
+general.log
+error.log
+security.log
