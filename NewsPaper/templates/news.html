@@ -8,14 +8,12 @@ News
 {% endblock title %}
 
 {% block content %}
-<a href="/accounts/login" class="btn btn-secondary btn-sm">Log in</a>
-<a href="/accounts/logout" class="btn btn-secondary btn-sm">Log Out</a>
+
 <h1>Все новости</h1>
 <tr> Поиск по новостям</tr>
 
-
    <form action="" method="get">
-       {{ filterset.form.as_p }}
+        {{ filterset.form.as_p }}
        <input type="submit" value="Найти" />
    </form>
 
