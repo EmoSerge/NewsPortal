@@ -2,39 +2,37 @@
 
 {% load d36_filters %}
 {% load custom_tags %}
+{% load i18n %}
 
-{% block title %}
-News
-{% endblock title %}
 
 {% block content %}
 
-<h1>Все новости</h1>
-<tr> Поиск по новостям</tr>
+<h1>{% translate "All news" %}</h1>
+<tr>{% translate "News search" %}</tr>
 
    <form action="" method="get">
         {{ filterset.form.as_p }}
-       <input type="submit" value="Найти" />
+       <input type="submit" value="{% translate "Search" %}" />
    </form>
 
    <hr>
 
 {% if perms.news.add_post %}
-<a href="/news/create/">Добавить новость</a>
-<a href="/news/article/create/">Добавить статью</a>
+<a href="/news/create/">{% translate "Add news" %}</a>
+<a href="/news/article/create/">{% translate "Add articles" %}</a>
 {% endif %}
 
 
    {% if news %}
        <table>
            <tr>
-               <td><h5>Заголовок</h5></td>
-               <td><h5>Категория</h5></td>
-               <td><h5>Дата</h5></td>
-               <td><h5>Время</h5></td>
-               <td><h5>Текст новости</h5></td>
+               <td><h5>{% translate "Title" %}</h5></td>
+               <td><h5>{% translate "Category" %}</h5></td>
+               <td><h5>{% translate "Date" %}</h5></td>
+               <td><h5>{% translate "Time" %}</h5></td>
+               <td><h5>{% translate "Text" %}</h5></td>
                {% if perms.news.change_post or perms.news.delete_post %}
-               <td><h5>  Действия</h5></td>
+               <td><h5> {% translate "Edit" %}</h5></td>
                {% endif %}
            </tr>
 
@@ -48,10 +46,10 @@ News
                <td>{{ n.time_add|time }}</td>
                <td>{{ n.text|truncatewords:20|censor }}</td>
                {% if perms.news.delete_post %}
-                   <td><a href="{{n.get_absolute_url}}/delete">Удалить</a></td>
+                   <td><a href="{{n.get_absolute_url}}/delete">{% translate "Delete" %}</a></td>
                {% endif %}
                {% if perms.news.change_post %}
-                   <td><a href="{{n.get_absolute_url}}/update">Изменить</a></td>
+                   <td><a href="{{n.get_absolute_url}}/update">{% translate "Edit" %}</a></td>
                {% endif %}
            </tr>
            {% endfor %}
@@ -59,7 +57,7 @@ News
        </table>
 
    {% else %}
-       <h2>Новостей нет!</h2>
+       <h2>{% translate "There is no news" %}</h2>
    {% endif %}
 
       {% if page_obj.has_previous %}

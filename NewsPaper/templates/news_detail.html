@@ -1,17 +1,14 @@
 {% extends 'flatpages/default.html' %}
 
 {% load d36_filters %}
-
-{% block title %}
-<h1> New1 </h1>
-{% endblock title %}
+{% load i18n %}
 
 {% block content %}
 
 <td><h1>{{ new1.title|censor }}</h1></td>
 <td>
     {% if new1.post_category.all %}
-        Категории:
+        {% translate "Category" %}:
         {% endif %}
 {% for cat in new1.post_category.all %}
     <a href="{% url 'category_list' cat.id %}">{{ cat.name }}</a>
@@ -26,9 +23,9 @@
 <td>{{ new1.text|censor}}</td>
 <br>
 {% if perms.news.delete_post %}
-    <td><a href="{{new1.get_absolute_url}}/delete">Удалить</a></td>
+    <td><a href="{{new1.get_absolute_url}}/delete">{% translate "Delete" %}</a></td>
 {% endif %}
 {% if perms.news.change_post %}
-    <td><a href="{{new1.get_absolute_url}}/update">Изменить</a></td>
+    <td><a href="{{new1.get_absolute_url}}/update">{% translate "Edit" %}</a></td>
 {% endif %}
 {% endblock content %}

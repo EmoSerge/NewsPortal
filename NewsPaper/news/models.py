@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.core.cache import cache
+from django.utils.translation import gettext as _
 
 
 class Author(models.Model):
@@ -23,7 +24,7 @@ class Author(models.Model):
 
 class Category(models.Model):
 
-    name = models.CharField(max_length=127, unique=True)
+    name = models.CharField(max_length=127, unique=True, help_text=_('Category name'))
     subscribers = models.ManyToManyField(User, through='SubscribeCategory')
 
     def __str__(self):

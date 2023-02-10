@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-10 14:29+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\fpages\admin.py:11
+msgid "Advanced options"
+msgstr ""
+
+#: .\news\models.py:27
+msgid "Category name"
+msgstr "Наименование категории"
+
+#: .\templates\403.html:6
+msgid "Error 403"
+msgstr "Ошибка 403"
+
+#: .\templates\403.html:9
+msgid "It seems that you do not have access to this page..."
+msgstr "Кажется, у Вас нет доступа к данной странице..."
+
+#: .\templates\article_edit.html:5
+msgid "Article"
+msgstr "Добавить статью"
+
+#: .\templates\article_edit.html:10 .\templates\news_edit.html:10
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\templates\category_list.html:8
+msgid "All news on the selected category"
+msgstr "Все новости по выбранной категории"
+
+#: .\templates\category_list.html:14
+msgid "Subscribe"
+msgstr "Подписаться"
+
+#: .\templates\category_list.html:20 .\templates\news.html:29
+msgid "Title"
+msgstr "Заголовок"
+
+#: .\templates\category_list.html:21 .\templates\news.html:30
+#: .\templates\news_detail.html:11
+msgid "Category"
+msgstr "Наименование категории"
+
+#: .\templates\category_list.html:22 .\templates\news.html:31
+msgid "Date"
+msgstr "Дата"
+
+#: .\templates\category_list.html:23 .\templates\news.html:32
+msgid "Time"
+msgstr "Время"
+
+#: .\templates\category_list.html:24 .\templates\news.html:33
+msgid "Text"
+msgstr "Текст"
+
+#: .\templates\category_list.html:26 .\templates\category_list.html:44
+#: .\templates\news.html:35 .\templates\news.html:52
+#: .\templates\news_detail.html:29
+msgid "Edit"
+msgstr "Изменить"
+
+#: .\templates\category_list.html:41 .\templates\news.html:49
+#: .\templates\news_delete.html:9 .\templates\news_delete.html:10
+#: .\templates\news_detail.html:26
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\templates\category_list.html:52 .\templates\news.html:60
+msgid "There is no news"
+msgstr "Новостей нет"
+
+#: .\templates\flatpages\default.html:19 .\templates\news_edit.html:5
+msgid "News"
+msgstr "Новости"
+
+#: .\templates\news.html:10
+msgid "All news"
+msgstr "Все новости"
+
+#: .\templates\news.html:11
+msgid "News search"
+msgstr "Поиск по новостям"
+
+#: .\templates\news.html:15
+msgid "Search"
+msgstr "Найти"
+
+#: .\templates\news.html:21
+msgid "Add news"
+msgstr "Добавить новость"
+
+#: .\templates\news.html:22
+msgid "Add articles"
+msgstr "Добавить статью"
+
+#: .\templates\news_delete.html:5
+msgid "Deleting news"
+msgstr "Удалить пост"
